@@ -13,10 +13,11 @@ public class DemoQA {
     @BeforeAll
     static void openMaximized() {
         Configuration.startMaximized = true;
+        Configuration.baseUrl = "https://demoqa.com";
     }
     @Test
     void fillTheForm () {
-        open("https://demoqa.com/automation-practice-form");
+        open("/automation-practice-form");
         String firstName = "Pavel";
         String lastName = "Mikhaylov";
         String userEmail = "mih@test.ru";
@@ -34,7 +35,7 @@ public class DemoQA {
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(userEmail);
-        $(byText(gender)).click();
+        $("#genterWrapper").$(byText(gender)).click();
         $("#userNumber").setValue(userNumber);
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").click();
