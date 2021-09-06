@@ -23,12 +23,16 @@ public class DemoQA {
         String userEmail = "mih@test.ru";
         String gender = "Male";
         String userNumber = "9999999999";
-        //String date = "06 Sep 2021";
+        String month = "May";
+        String year = "1986";
+        String date = "29 May,1986\n";
         String subjectsInput = "Hindi";
         String hobbie = "Reading";
-        File file = new File("src/GoogleTestsSuccess.png");
-        String fileName = "GoogleTestsSuccess.png";
+        File file = new File("src/test/resources/img/test.jpg");
+        String fileName = "test.jpg";
         String currentAddress = "SPB.ru";
+        String state = "NCR";
+        String city = "Delhi";
 
 
 
@@ -38,14 +42,17 @@ public class DemoQA {
         $("#genterWrapper").$(byText(gender)).click();
         $("#userNumber").setValue(userNumber);
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").click();
-        $(".react-datepicker__month-select [value=\"4\"]").click();
-        $(".react-datepicker__year-select [value=\"2001\"]").click();
-        $(".react-datepicker__day--015").click();
+        $(".react-datepicker__month-select").selectOption(month);
+        $(".react-datepicker__year-select").selectOption(year);
+        $(".react-datepicker__day--029:not(.react-datepicker__day--outside-month").click();
         $("#subjectsInput").setValue(subjectsInput).pressEnter();
-        $(byText(hobbie)).click();
+        $("#hobbiesWrapper").$(byText(hobbie)).click();
         $("#uploadPicture").uploadFile(file);
         $("#currentAddress").setValue(currentAddress);
+        $("#state").click();
+        $("#stateCity-wrapper").$(byText(state)).click();
+        $("#city").click();
+        $("#stateCity-wrapper").$(byText(city)).click();
 
 
         $("#close-fixedban").click();
@@ -55,13 +62,14 @@ public class DemoQA {
         $("tr:nth-child(2) > td:nth-child(2)").shouldHave(text(userEmail));
         $("tr:nth-child(3) > td:nth-child(2)").shouldHave(text(gender));
         $("tr:nth-child(4) > td:nth-child(2)").shouldHave(text(userNumber));
-        //$("tr:nth-child(5) > td:nth-child(2)").shouldHave(text("")); // Не знаю как проверить число
+        $("tr:nth-child(5) > td:nth-child(2)").shouldHave(text(date)); // Не знаю как проверить число
         $("tr:nth-child(6) > td:nth-child(2)").shouldHave(text(subjectsInput));
         $("tr:nth-child(7) > td:nth-child(2)").shouldHave(text(hobbie));
         $("tr:nth-child(8) > td:nth-child(2)").shouldHave(text(fileName));
         $("tr:nth-child(9) > td:nth-child(2)").shouldHave(text(currentAddress));
+        $("tr:nth-child(10) > td:nth-child(2)").shouldHave(text(state + " " + city));
 
-        sleep(5000);
+        sleep(1000);
     }
 
 }
